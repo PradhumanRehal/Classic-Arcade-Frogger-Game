@@ -1,11 +1,14 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
@@ -14,6 +17,23 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    //+pradhuman collission detection
+    var xdiff = player.x - this.x;
+    var ydiff = player.y - this.y;
+    var dist = Math.pow((xdiff * xdiff + ydiff * ydiff), 0.5);
+
+    //+pradhuman enemy respawn
+    this.x=(this.x++)+this.speed;
+    if(this.x>=550){
+      this.x=Math.random()*(-200-80)+(-200);
+    }
+    
+    //+pradhuman player reset if collision occurs
+    if (dist < 30) {
+      player.x=200;
+      player.y=400;      
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -24,11 +44,56 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var Player = function(x,y){
+  this.sprite = 'images/char-boy.png';
+  this.x=x;
+  this.y=y;
+};
+
+//+pradhuman player respawn
+Player.prototype.update=function(){
+  if(this.y<=0){
+    this.x=200;
+    this.y=400;
+  }
+};
+
+//+pradhuman draws the player on the screen
+Player.prototype.render=function(){
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//+pradhuman handles player movement 
+Player.prototype.handleInput=function(key){
+  if(key=='left' && this.x>=0){
+    this.x -=101;
+  }
+  else if(key=='up' && this.y>=60){
+    this.y -=80;
+  }
+  else if(key=='right' && this.x<=400){
+    this.x +=101;
+  }
+  else if(key=='down' && this.y<=380){
+    this.y +=80;
+  }
+};
+
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
+//+pradhuman instantiate enemy objects
+var enemy1=new Enemy(Math.random()*(-200-40)+(-200),60,Math.random()*7+3);
+var enemy2=new Enemy(Math.random()*(-200-40)+(-200),140,Math.random()*7+3);
+var enemy3=new Enemy(Math.random()*(-200-40)+(-200),220,Math.random()*7+3);
+
+var allEnemies=[enemy1,enemy2,enemy3];
+
+//+pradhuman instantiate player object
+var player = new Player(200,400);
 
 
 

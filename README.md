@@ -1,6 +1,21 @@
-frontend-nanodegree-arcade-game
-===============================
+Classic Arcade Frogger Game
+==========================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Game
+In **Classic Arcade Frogger Game** the player attempts to reach the water without being touched by the bugs on the road.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Downloading the Game
+Download the code from the repository at the [Classic Arcade Frogger Game](https://github.com/PradhumanRehal/Classic-Arcade-Frogger-Game). 
+The code can be cloned from the repository or downloaded as a zip file.
+
+## Playing the Game
+To play the game, open the file `index.html` in a browser. The game will start automatically. 
+
+### Movement
+The player character can be moved by using the arrow keys on the keyboard
+* **Up arrow** to move **up** on the screen.
+* **Down arrow** to move **down** on the screen.
+* **Right arrow** to move **right** on the screen.
+* **Left arrow** to move **left** on the screen.
+
+
